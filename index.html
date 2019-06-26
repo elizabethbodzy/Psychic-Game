@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Psychic Game</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <div id="game">
+        <h1> The Psychic Game! </h1>
+        <p> Guess what letter I'm thinking of </p>
+        <p id="wins-text"> Wins : </p>
+        <p id="losses-text"> Losses: </p>
+        <p id="guess-left"> Guesses Left: </p>
+        <p id="guess-so-far"> Your Guesses so far: </p>
+    </div>
+            
+    <script type="text/javascript">
+
+        var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
+                               "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+         var wins = 0;
+		 var losses = 0;
+         var numberGuess = 9;
+		 var guessOptions = [];
+
+         // This function is run whenever the user presses a key.
+         document.onkeyup = function(event) {
+
+            // Determines which key was pressed.
+            var userGuess = event.key;
+
+            // Randomly chooses a choice from the options array. This is the Computer's guess.
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+            //Gives array of letter options
+            var choices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", 
+                           "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
+
+
+            if (choices.indexOf(userGuess) > 0){ 
+            if (userGuess === computerGuess) {
+                wins++
+                numberGuess = 9;
+                guessOptions = [];
+            } 
+            if  (userGuess != computerGuess) {
+                numberGuess --;
+                guessOptions.push(userGuess);
+            }
+            if (numberGuess === 0) {
+                numberGuess = 9;
+                losses ++;
+                guessOptions = [];
+            }
+        
+                    
+                    var html = 
+			"<h1> The Psychic Game </h1>" +
+			"<p>Guess what letter I'm thinking of!</p>" +
+			"<p>Wins: " + wins + "</p>" +
+			"<p>Losses: " + losses + "</p>" +
+			"<p>Guesses Left: " + numberGuess + "</p>" +
+			"<p>Your Guesses so far: " + guessOptions.join(", ") + "</p>";
+
+			document.querySelector("#game").innerHTML = html;
+
+			
+			}
+		};
+
+    </script>
+
+</body>
+</html>
