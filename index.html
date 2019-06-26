@@ -15,10 +15,10 @@
     <div id="game">
         <h1> The Psychic Game! </h1>
         <p> Guess what letter I'm thinking of </p>
-        <p id="wins-text"> Wins : </p>
-        <p id="losses-text"> Losses: </p>
-        <p id="guess-left"> Guesses Left: </p>
-        <p id="guess-so-far"> Your Guesses so far: </p>
+        <p> Wins : <span id ="wins-text"> </span></p>
+        <p> Losses: <span id ="losses-text"> </span></p>
+        <p> Guesses Left:<span id="guess-left"></span> </p>
+        <p> Your Guesses so far: <span id="guess-so-far"> </span></p>
     </div>
             
     <script type="text/javascript">
@@ -68,23 +68,11 @@
                 guessOptions = [];
             }
         
-                    
-            //         var html = 
-			// "<h1> The Psychic Game </h1>" +
-			// "<p>Guess what letter I'm thinking of!</p>" +
-			// "<p>Wins: " + wins + "</p>" +
-			// "<p>Losses: " + losses + "</p>" +
-			// "<p>Guesses Left: " + numberGuess + "</p>" +
-			// "<p>Your Guesses so far: " + guessOptions.join(", ") + "</p>";
-
-			// document.querySelector("#game").innerHTML = html;
-
          
-         
-        winsText.textContent = "wins: " + wins;
-        lossesText.textContent = "losses: " + losses;
-        guessLeftText.textContent = "guess-left: " + numberGuess;
-        guessSoFarText.textContent = "guess-so-far: " + guessOptions;
+        winsText.textContent =  wins;
+        lossesText.textContent =  losses;
+        guessLeftText.textContent =  numberGuess;
+        guessSoFarText.textContent = guessOptions;
 
        
 			
